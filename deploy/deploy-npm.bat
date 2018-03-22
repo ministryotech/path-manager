@@ -13,4 +13,3 @@ CALL gulp
 
 ECHO Publishing to NPM...
 CALL npm publish deploy\build\
-pause
