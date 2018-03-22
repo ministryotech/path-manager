@@ -38,7 +38,7 @@
 
     // Exports to the global scope
     if (typeof define === "function" && define.amd) {
-        define("window-wrapper", [], function() { return PathManager })
+        define("path-manager", [], function() { return PathManager })
     } else if (typeof exports === "object") {
         module.exports = PathManager
     } else {
