@@ -28,7 +28,7 @@ Newer content prefers Github. Bitbucket is no longer actively used.
 ### Where can I get it?
 You can download the package for this project from any of the following package managers...
 
-- **NPM** - [https://www.mpmjs.com/window-wrapper](https://www.mpmjs.com/window-wrapper)
+- **NPM** - [https://www.mpmjs.com/uri-path-manager](https://www.mpmjs.com/uri-path-manager)
 
 ### Contribution guidelines
 If you would like to contribute to the project, please contact me.
