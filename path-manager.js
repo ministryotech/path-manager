@@ -8,7 +8,7 @@
 (function() {
 
     const root = window
-    const winWrap = require("window-wrapper")
+    const winWrap = require('window-wrapper')
 
     function PathManager(windowWrapper) {
         this.winWrap = windowWrapper || winWrap
@@ -30,16 +30,16 @@
         }
     
         this.pathIs = function(string) {
-            const path = this.winWrap.getPath().replace(new RegExp("/", "g"), "")
-            const testString = string.replace(new RegExp("/", "g"), "")
+            const path = this.winWrap.getPath().replace(new RegExp('/', 'g'), '')
+            const testString = string.replace(new RegExp('/', 'g'), '')
             return path.toLowerCase() === testString.toLowerCase()
         }
     }
 
     // Exports to the global scope
-    if (typeof define === "function" && define.amd) {
-        define("path-manager", [], function() { return PathManager })
-    } else if (typeof exports === "object") {
+    if (typeof define === 'function' && define.amd) {
+        define('path-manager', [], function() { return PathManager })
+    } else if (typeof exports === 'object') {
         module.exports = PathManager
     } else {
         root.PathManager = PathManager
