@@ -1,43 +1,78 @@
+// noinspection JSUnusedGlobalSymbols
+
 /*
     Path Manager
     ------------
     Wraps window path methods for easy mocking and provides access utilities.
-
     https://github.com/ministryotech/path-manager
 */
 (function() {
 
+    // noinspection UnnecessaryLocalVariableJS - convention.
     const root = window
-    const winWrap = require('window-wrapper')
+    // noinspection ES6ConvertRequireIntoImport
+    const WindowWrapper = require('window-wrapper')
 
+    /**
+     * A helper object for accessing and querying elements of URI paths.
+     * @param {WindowWrapper} windowWrapper
+     * @constructor
+     */
     function PathManager(windowWrapper) {
-        this.winWrap = windowWrapper || winWrap
 
+        this.winWrap = windowWrapper || WindowWrapper
+
+        /**
+         * Gets the full href for the current URI.
+         * @returns {string} The full URI.
+         */
         this.href = function() {
             return this.winWrap.getHref()
         }
 
+        /**
+         * Gets the host for the current URI.
+         * @returns {string} The host.
+         */
         this.host = function() {
             return this.winWrap.getHost()
-        } 
+        }
 
+        /**
+         * Gets the path for the current URL.
+         * @returns {string} The path.
+         */
         this.path = function() {
             return this.winWrap.getPath()
         }
 
-        this.pathContains = function(string) {
-            return this.winWrap.getPath().toLowerCase().indexOf(string.toLowerCase()) !== -1
+        /**
+         * Indicates if a path contains a given substring.
+         * @param {string} what The substring to look for.
+         * @returns {boolean}
+         */
+        this.pathContains = function(what) {
+            return this.path.toLowerCase().indexOf(what.toLowerCase()) !== -1
         }
-    
-        this.pathIs = function(string) {
+
+        /**
+         * Indicates if a path matches a given expectation
+         * @param {string} expected The string to test against.
+         * @returns {boolean}
+         */
+        this.pathIs = function(expected) {
             const path = this.winWrap.getPath().replace(new RegExp('/', 'g'), '')
-            const testString = string.replace(new RegExp('/', 'g'), '')
+            const testString = expected.replace(new RegExp('/', 'g'), '')
             return path.toLowerCase() === testString.toLowerCase()
         }
     }
 
-    // Exports to the global scope
+    /*--------------------------------------------------------------------------*/
+
+    // Export library
+    // noinspection JSUnresolvedReference - define check for require.js module support.
     if (typeof define === 'function' && define.amd) {
+        // noinspection JSUnresolvedReference - define check for require.js module support.
         define('path-manager', [], function() { return PathManager })
     } else if (typeof exports === 'object') {
         module.exports = PathManager
