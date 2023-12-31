@@ -8,10 +8,8 @@
 */
 (function() {
 
-    // noinspection UnnecessaryLocalVariableJS - convention.
-    const root = window
-    // noinspection ES6ConvertRequireIntoImport
-    const WindowWrapper = require('window-wrapper')
+    var root = window
+    var WindowWrapper = require('window-wrapper')
 
     /**
      * A helper object for accessing and querying elements of URI paths.
@@ -61,8 +59,8 @@
          * @returns {boolean}
          */
         this.pathIs = function(expected) {
-            const path = this.winWrap.getPath().replace(new RegExp('/', 'g'), '')
-            const testString = expected.replace(new RegExp('/', 'g'), '')
+            var path = this.winWrap.getPath().replace(new RegExp('/', 'g'), '')
+            var testString = expected.replace(new RegExp('/', 'g'), '')
             return path.toLowerCase() === testString.toLowerCase()
         }
     }
@@ -73,11 +71,13 @@
     // noinspection JSUnresolvedReference - define check for require.js module support.
     if (typeof define === 'function' && define.amd) {
         // noinspection JSUnresolvedReference - define check for require.js module support.
-        define('path-manager', [], function() { return PathManager })
+        define('path-manager', [], function() {
+            return PathManager
+        })
     } else if (typeof exports === 'object') {
         module.exports = PathManager
     } else {
         root.PathManager = PathManager
     }
-    
+
 })()
