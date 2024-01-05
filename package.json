@@ -1,6 +1,6 @@
 {
   "name": "uri-path-manager",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "author": "Keith Jackson",
   "license": "MIT",
   "private": false,
@@ -26,7 +26,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "window-wrapper": "^3.0.0"
+    "window-wrapper": "^4.0.0"
   },
   "scripts": {
     "lint": "eslint src/*.js --fix",
