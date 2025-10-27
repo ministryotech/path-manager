@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run Test Harnesses" type="CompoundRunConfigurationType">
+    <toRun name="Run JS Test Harness" type="js.build_tools.npm" />
+    <toRun name="Run TS Test Harness" type="js.build_tools.npm" />
+    <toRun name="TS Type Checking Test Harness" type="js.build_tools.npm" />
+    <method v="2" />
+  </configuration>
+</component>
