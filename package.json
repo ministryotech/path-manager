@@ -1,42 +1,42 @@
 {
   "name": "uri-path-manager",
-  "version": "3.1.0",
+  "version": "4.0.0",
   "author": "Keith Jackson",
   "license": "MIT",
   "private": false,
-  "keywords": [
-    "stub",
-    "window",
-    "global",
-    "wrapper",
-    "path"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ministryotech/path-manager.git"
+  "type": "module",
+  "main": "./dist/uri-path-manager.js",
+  "exports": {
+    ".": "./dist/uri-path-manager.js",
+    "./package.json": "./package.json"
   },
-  "main": "path-manager.js",
   "devDependencies": {
-    "@types/node": "^20.10.6",
-    "@typescript-eslint/eslint-plugin": "^5.6.0",
-    "@typescript-eslint/parser": "^5.6.0",
-    "esbuild": "^0.19.11",
-    "eslint": "^7.32.0",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.38.0",
+    "@types/node": "^20.19.5",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^9.38.0",
     "eslint-config-defaults": "^9.0.0",
-    "typescript": "^5.1.6"
+    "globals": "^16.4.0",
+    "rollup": "^4.52.5",
+    "terser": "^5.44.0",
+    "typescript": "~5.9.3"
   },
   "dependencies": {
-    "window-wrapper": "^4.0.0"
+    "window-wrapper": "^5.0.2"
   },
   "scripts": {
-    "lint": "eslint src/*.js --fix",
-    "ensure-dir": "mkdir ./dist",
+    "init": "npm i && npm link",
+    "lint": "eslint src/*.ts --fix",
     "clean": "rm -rf ./dist",
-    "esbuild:min": "esbuild ./dist/path-manager.js --minify --outfile=./dist/path-manager.min.js",
-    "tsc:build": "npx tsc",
-    "tsc:package": "npm run clean && npm run ensure-dir && npm run tsc:build && npm run esbuild:min && cp README.md ./dist/ && cp package.json ./dist/",
-    "publish:npm": "npm publish dist/",
-    "publish:tar": "tar -czvf path-manager.tar.gz dist/",
-    "release": "npm run lint && npm run tsc:package && npm run publish:npm && npm run publish:tar"
+    "type-checking-watch": "tsc --watch --noemit",
+    "minify": "terser ./dist/uri-path-manager.js -o ./dist/uri-path-manager.min.js",
+    "build": "npm i && npm run clean && npm run lint && tsc && npm run minify && cp package.publish.json ./dist/package.json && npm link",
+    "package": "npm run build && cp README.md ./dist/",
+    "pack": "npm pack dist/",
+    "publish": "npm publish dist/",
+    "publish-dry-run": "npm publish dist/ --dry-run",
+    "release": "npm run package && npm run pack && npm run publish"
   }
 }

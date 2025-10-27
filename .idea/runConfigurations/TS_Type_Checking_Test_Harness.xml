@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="TS Type Checking Test Harness" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/test-harness-ts/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="type-checking-watch" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>
