@@ -2,22 +2,10 @@ import './style.css'
 
 import typescriptLogo from './typescript.svg'
 
-import WindowWrapper from 'window-wrapper'
+import PathManager from 'uri-path-manager'
 
 const tsLogo = document.querySelector('#tsLogo') as HTMLImageElement
 tsLogo.src = typescriptLogo
-
-/**
- * Clickable page event.
- * @param event
- */
-const clickablePageEvent = (event : Event) => {
-    event.preventDefault()
-    const target = event.target as HTMLElement
-    const targetId = target.getAttribute('id')
-    if (targetId === 'eventOnButton' || targetId === 'eventOffButton') return
-    setElement('#eventTestButtonResult', "You clicked the page!")
-}
 
 /**
  * Sets the element with the given selector to the given value.
@@ -29,26 +17,13 @@ const setElement = (selector: string, value: string) => {
     if (el !== null) el.innerText = value
 }
 
-setElement('#currentUri', WindowWrapper.getHref())
-setElement('#hostName', WindowWrapper.getHost())
-setElement('#path', WindowWrapper.getPath())
+const myPathManager = new PathManager()
 
-const eventOnButton = document.querySelector('#eventOnButton') as HTMLButtonElement
-const eventOffButton = document.querySelector('#eventOffButton') as HTMLButtonElement
+setElement('#currentUri', myPathManager.href)
+setElement('#hostName', myPathManager.host)
+setElement('#path', myPathManager.path)
 
-eventOnButton.addEventListener('click', (event) => {
-    event.preventDefault()
-    eventOffButton.removeAttribute('disabled')
-    eventOnButton.setAttribute('disabled', 'disabled')
-
-    WindowWrapper.addEventListener('click', clickablePageEvent)
-    setElement('#eventTestButtonResult', "Events are switched on!")
-})
-
-eventOffButton.addEventListener('click', (event) => {
-    event.preventDefault()
-    eventOnButton.removeAttribute('disabled')
-    eventOffButton.setAttribute('disabled', 'disabled')
-    WindowWrapper.removeEventListener('click', clickablePageEvent)
-    setElement('#eventTestButtonResult', "Clicking won't do anything now :(")
-})
+setElement('#containsSlash', myPathManager.pathContains('/') ? 'true' : 'false')
+setElement('#containsFish', myPathManager.pathContains('Fish') ? 'true' : 'false')
+setElement('#isSlash', myPathManager.pathIs('/') ? 'true' : 'false')
+setElement('#isCat', myPathManager.pathIs('Cat') ? 'true' : 'false')

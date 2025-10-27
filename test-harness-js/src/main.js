@@ -2,40 +2,27 @@ import './style.css'
 
 import javascriptLogo from './javascript.svg'
 
-import WindowWrapper from 'window-wrapper'
+import PathManager from 'uri-path-manager'
 
 document.querySelector('#jsLogo').src = javascriptLogo
 
-document.querySelector('#currentUri').innerText = WindowWrapper.getHref()
-document.querySelector('#hostName').innerText = WindowWrapper.getHost()
-document.querySelector('#path').innerText = WindowWrapper.getPath()
-
 /**
- * Clickable page event.
- * @param {Event} event
+ * Sets the element with the given selector to the given value.
+ * @param {string} selector
+ * @param {any} value
  */
-const clickablePageEvent = (event) => {
-    event.preventDefault()
-    //TS const target = event.target as HTMLElement
-    // noinspection JSUnresolvedReference
-    const targetId = event.target.getAttribute('id')
-    if (targetId === 'eventOnButton' || targetId === 'eventOffButton') return
-    document.querySelector('#eventTestButtonResult').innerText = "You clicked the page!"
+const setElement = (selector, value) => {
+    const el = document.querySelector(selector)
+    if (el !== null) el.innerText = value
 }
 
-document.querySelector('#eventOnButton').addEventListener('click', (event) => {
-    event.preventDefault()
-    document.querySelector('#eventOffButton').removeAttribute('disabled')
-    document.querySelector('#eventOnButton').setAttribute('disabled', 'disabled')
+const myPathManager = new PathManager()
 
-    WindowWrapper.addEventListener('click', clickablePageEvent)
-    document.querySelector('#eventTestButtonResult').innerText = "Events are switched on!"
-})
+setElement('#currentUri', myPathManager.href)
+setElement('#hostName', myPathManager.host)
+setElement('#path', myPathManager.path)
 
-document.querySelector('#eventOffButton').addEventListener('click', (event) => {
-    event.preventDefault()
-    document.querySelector('#eventOnButton').removeAttribute('disabled')
-    document.querySelector('#eventOffButton').setAttribute('disabled', 'disabled')
-    WindowWrapper.removeEventListener('click', clickablePageEvent)
-    document.querySelector('#eventTestButtonResult').innerText = "Clicking won't do anything now :("
-})
+setElement('#containsSlash', myPathManager.pathContains('/') ? 'true' : 'false')
+setElement('#containsFish', myPathManager.pathContains('Fish') ? 'true' : 'false')
+setElement('#isSlash', myPathManager.pathIs('/') ? 'true' : 'false')
+setElement('#isCat', myPathManager.pathIs('Cat') ? 'true' : 'false')
