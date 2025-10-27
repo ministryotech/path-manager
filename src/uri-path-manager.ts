@@ -23,7 +23,7 @@ class PathManager {
 
     /**
      * Gets the path for the current URL.
-     * @returns The path.
+     * @returns {string} The path.
      */
     get path(): string {
         return this.winWrapInstance.getPath()
@@ -31,7 +31,7 @@ class PathManager {
 
     /**
      * Gets the host for the current URI.
-     * @returns The host.
+     * @returns {string} The host.
      */
     get host(): string {
         return this.winWrapInstance.getHost()
@@ -39,16 +39,16 @@ class PathManager {
 
     /**
      * Gets the full href for the current URI.
-     * @returns The full URI.
+     * @returns {string} The full URI.
      */
     get href(): string {
-        return this.winWrapInstance.getPath()
+        return this.winWrapInstance.getHref()
     }
 
     /**
      * Indicates if a path matches a given expectation
-     * @param expected The string to test against.
-     * @returns A flag, to indicate if the path matches the expectation.
+     * @param {string} expected The string to test against.
+     * @returns {boolean} A flag, to indicate if the path matches the expectation.
      */
     pathIs(expected: string): boolean {
         const path = this.href.replace(new RegExp('/', 'g'), '')
@@ -58,8 +58,8 @@ class PathManager {
 
     /**
      * Indicates if a path contains a given substring.
-     * @param what The substring to look for.
-     * @returns A flag, to indicate if the path contains the substring.
+     * @param {string} what The substring to look for.
+     * @returns {boolean} A flag, to indicate if the path contains the substring.
      */
     pathContains(what: string): boolean {
         return this.path.toLowerCase().indexOf(what.toLowerCase()) !== -1
