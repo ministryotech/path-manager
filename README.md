@@ -28,3 +28,6 @@ If you would like to contribute to the project, please contact me.
 
 ### Who do I talk to?
 * Keith Jackson - temporal-net@live.co.uk
+
+### Support
+This project is supported on all ES6 and above platforms. For ES5 platforms please use up to v2.1.0.

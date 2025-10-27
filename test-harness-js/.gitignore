@@ -1,4 +1,4 @@
-﻿# Logs
+# Logs
 logs
 *.log
 npm-debug.log*
@@ -22,7 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-/path-manager.tar.gz
-/path-manager-*.tgz
-/uri-path-manager.tar.gz
-/uri-path-manager-*.tgz

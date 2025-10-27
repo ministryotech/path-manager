@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Test Harness (JavaScript)</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <a href="https://vite.dev" target="_blank">
+            <img src="/vite.svg" class="logo" alt="Vite logo"/>
+        </a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+            <img id="jsLogo" src="" class="logo vanilla" alt="JavaScript logo"/>
+        </a>
+        <h1>NPM Package Test Harness (JavaScript)</h1>
+        <div class="card">
+            <dl>
+                <dt>Current URI</dt>
+                <dd id="currentUri"></dd>
+                <dt>Host Name</dt>
+                <dd id="hostName"></dd>
+                <dt>Path</dt>
+                <dd id="path"></dd>
+            </dl>
+            <h2>Event Test</h2>
+            <button id="eventOnButton" type="button">Click Here to Enable Click Events</button>
+            <button id="eventOffButton" type="button" disabled>Click Here to Disable Click Events</button>
+            <p>
+                Click anywhere to change the text below...
+            </p>
+            <span id="eventTestButtonResult">Nothing Clicked Yet - I'm waiting</span>
+        </div>
+        <p class="read-the-docs">
+            Click on the Vite logo to learn more
+        </p>
+    </div>
+</div>
+</body>
+<script type="module" src="src/main.js"></script>
+</html>

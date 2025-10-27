@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Test Harness (TypeScript)</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <a href="https://vite.dev" target="_blank">
+            <img src="/vite.svg" class="logo" alt="Vite logo"/>
+        </a>
+        <a href="https://www.typescriptlang.org/" target="_blank">
+            <img id="tsLogo" src="" class="logo vanilla" alt="TypeScript logo"/>
+        </a>
+        <h1>NPM Package Test Harness (TypeScript)</h1>
+        <div class="card">
+            <dl>
+                <dt>Current URI</dt>
+                <dd id="currentUri"></dd>
+                <dt>Host Name</dt>
+                <dd id="hostName"></dd>
+                <dt>Path</dt>
+                <dd id="path"></dd>
+            </dl>
+            <h2>Event Test</h2>
+            <button id="eventOnButton" type="button">Click Here to Enable Click Events</button>
+            <button id="eventOffButton" type="button" disabled>Click Here to Disable Click Events</button>
+            <p>
+                Click anywhere to change the text below...
+            </p>
+            <span id="eventTestButtonResult">Nothing Clicked Yet - I'm waiting</span>
+        </div>
+        <p class="read-the-docs">
+            Click on the Vite and TypeScript logos to learn more
+        </p>
+    </div>
+</div>
+</body>
+<script type="module" src="src/main.ts"></script>
+</html>
